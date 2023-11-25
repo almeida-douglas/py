@@ -1,23 +1,17 @@
 bd = {}
 
-def adicionar(nome, telefone, email):
-    bd[nome] = {'Telefone': telefone, 'Email': email}
-    print(f'Contato {nome} adicionado com sucesso!')
+def adicionar(nome, telefone, endereco):
+    bd[nome] = {'Telefone': telefone, 'Endereco': endereco}
+    print(f'{nome} adicionado com sucesso!')
 
-    repetir =  input("Repetir? S/N ")
-    if repetir == 's' or repetir == 'S':
-        adicionar(nome, telefone, email)
 
 def consultar(nome):
     if nome in bd:
         contato = bd[nome]
-        print(f'Nome: {nome}\nTelefone: {contato["Telefone"]}\nEmail: {contato["Email"]}')
+        print(f'Nome: {nome}\nTelefone: {contato["Telefone"]}\nEndereco: {contato["Endereco"]}')
     else:
-        print(f'Contato {nome} não encontrado.')
+        print(f'{nome} não encontrado.')
 
-    repetir =  input("Repetir? S/N ")
-    if repetir == 's' or repetir == 'S':
-        consultar(nome)
 
 def deletar():
     menu()
@@ -25,10 +19,8 @@ def deletar():
 def listar():
     print('Lista de Contatos:')
     for nome, contato in bd.items():
-        print(f'Nome: {nome}\nTelefone: {contato["Telefone"]}\nEmail: {contato["Email"]}\n---')
-    repetir =  input("Repetir? S/N ")
-    if repetir == 's' or repetir == 'S':
-        listar()
+        print(f'Nome: {nome}\nTelefone: {contato["Telefone"]}\nEndereco: {contato["Endereco"]}\n---')
+
 
 def zerar():
     menu()
@@ -62,10 +54,10 @@ def menu():
         escolha = input("Escolha uma opção de 1 a 7: ")
 
         if escolha == '1':
-            nome = input("Digite o nome do contato: ")
-            telefone = input("Digite o número de telefone: ")
-            email = input("Digite o endereço de e-mail: ")
-            adicionar(nome, telefone, email)
+            nome = input("Digite o nome: ")
+            telefone = input("Digite o número: ")
+            endereco = input("Digite o endereço: ")
+            adicionar(nome, telefone, endereco)
 
         elif escolha == '2':
             nome = input("Digite o nome do contato a ser buscado: ")
